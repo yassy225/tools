@@ -1,0 +1,22 @@
+---
+- name: Setup for Linux OS
+  hosts: linux
+  become: true
+
+  roles:
+    - role: base
+      tags: "base"
+    - role: locale
+      tags: "locale"
+    - role: packages
+      tags: "packages"
+    - role: middleware
+      tags: "middleware"
+
+  post_tasks:
+    - name: Restart server
+      reboot:
+
+    - name: Waiting reboot
+      wait_for_connection:
+        timeout: 300

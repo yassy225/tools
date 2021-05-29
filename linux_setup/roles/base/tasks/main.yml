@@ -1,0 +1,27 @@
+---
+- name: Install libselinux-python(RedHat)
+  yum:
+    name: libselinux-python
+    state: present
+    update_cache: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
+  when: ansible_os_family == 'RedHat'
+
+- name: Disable firewalld(RedHat)
+  systemd:
+    name: firewalld
+    enabled: no
+  when: ansible_os_family == 'RedHat'
+
+- name: Disable ufw(Ubuntu)
+  service:
+    name: ufw
+    enabled: no
+  when: ansible_os_family == 'Debian'
+
+- name: Set hostname
+  command: hostnamectl set-hostname "{{hostname}}"

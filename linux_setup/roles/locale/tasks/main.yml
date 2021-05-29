@@ -1,0 +1,13 @@
+---
+- name: Install Language Pack
+  apt:
+    name: language-pack-ja
+    state: present
+  when: ansible_os_family == 'Debian' 
+
+- name: Set Language
+  command: localectl set-locale LANG=ja_JP.utf8
+
+- name: Set TimeZone
+  timezone:
+    name: Asia/Tokyo

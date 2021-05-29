@@ -1,0 +1,19 @@
+---
+- name: Load packagelist
+  include_vars: "{{ansible_os_family}}.yml"
+
+- name: Update package(RedHat)
+  yum:
+    name: '*'
+    state: latest
+  when: ansible_os_family == 'RedHat'
+
+- name: Update package(Ubuntu)
+  apt:
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: Install package
+  package:
+    name: "{{package_list}}"
+    state: present
