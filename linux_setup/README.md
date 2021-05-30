@@ -11,7 +11,7 @@ inventory.iniファイルと同じ階層にて、ansible-playbookコマンドで
 
 ### 実行コマンド例
 ```
-ansible-playbook -i inventory.ini main.yml -Kk -u vagrant
+ansible-playbook -i inventory.ini linux_setup.yml -Kk -u vagrant
 ```
 
 ## やっていること
