@@ -13,3 +13,20 @@ inventory.iniファイルと同じ階層にて、ansible-playbookコマンドで
 ```
 ansible-playbook -i inventory.ini main.yml -Kk -u vagrant
 ```
+
+## やっていること
+### base role
+- SELinux無効化(RedHat系のみ)
+- ufw無効化(Ubuntuのみ)
+- ホスト名設定
+
+### locale role
+- 日本語化設定
+- タイムゾーンを日本に設定
+
+### packages role
+- パッケージを最新化
+- 必要パッケージをインストール
+
+### middleware role
+- vimの設定
